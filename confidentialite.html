@@ -8,8 +8,8 @@
 <meta name="description" content="Politique de confidentialité Rimporty — données collectées, utilisation, droits RGPD et loi 09-08 marocaine.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://rimporty.com/confidentialite.html">
-<link rel="icon" href="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg">
-<link rel="apple-touch-icon" href="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg">
+<link rel="icon" href="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778528548/rimportylogo_h6t4lb.png">
+<link rel="apple-touch-icon" href="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778528548/rimportylogo_h6t4lb.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -17,10 +17,10 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--black:#0A0A0A;--white:#FFFFFF;--g100:#F7F7F7;--g200:#EBEBEB;--g400:#AAAAAA;--g500:#717171;--font-h:'Barlow Condensed',sans-serif;--font-b:'Barlow',sans-serif}
 body{background:var(--white);color:var(--black);font-family:var(--font-b);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-nav{background:var(--black);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
-.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo img{width:34px;height:34px;object-fit:cover;border-radius:50%}
-.nav-logo-t{font-family:var(--font-h);font-size:20px;font-weight:900;text-transform:uppercase;color:white;letter-spacing:0.04em}
+nav{background:var(--black);height:70px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 24px}
+.nav-spacer{justify-self:start}
+.nav-logo{display:flex;align-items:center;text-decoration:none;justify-self:center}
+.nav-logo img{height:42px;width:auto;object-fit:contain}
 .back{font-family:var(--font-h);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none}
 .back:hover{color:white}
 .hero{background:var(--black);padding:72px 56px;border-bottom:1px solid rgba(255,255,255,0.06)}
@@ -69,11 +69,11 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 <body>
 
 <nav role="navigation" aria-label="Navigation principale">
+  <div class="nav-spacer"></div>
   <a href="index.html" class="nav-logo" aria-label="Rimporty - Accueil">
-    <img src="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg" alt="Logo Rimporty" width="34" height="34">
-    <div class="nav-logo-t">Rimporty</div>
+    <img src="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778528548/rimportylogo_h6t4lb.png" alt="Logo Rimporty" height="42">
   </a>
-  <a href="index.html" class="back">← Retour à l'accueil</a>
+  <a href="index.html" class="back" style="justify-self:end">← Retour</a>
 </nav>
 
 <div class="hero">
@@ -133,7 +133,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 </div>
 
 <footer>
-  <div style="display:flex;align-items:center;gap:11px"><img src="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover"><span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;color:white">Rimporty</span></div>
+  <div style="display:flex;align-items:center;gap:11px"><img src="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778528548/rimportylogo_h6t4lb.png" style="width:30px;height:30px;border-radius:50%;object-fit:cover"><span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;color:white">Rimporty</span></div>
   <ul class="flinks"><li><a href="index.html">Accueil</a></li><li><a href="blog.html">Blog</a></li><li><a href="confidentialite.html">Confidentialité</a></li></ul>
   <p>© 2025 Rimporty</p>
 </footer>
