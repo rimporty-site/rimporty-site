@@ -74,13 +74,18 @@ nav{background:var(--black);height:68px;display:flex;align-items:center;justify-
 .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{position:fixed;top:0;right:-100%;width:min(86vw,360px);height:100vh;height:100dvh;background:var(--black);z-index:300;padding:96px 32px 32px;display:flex;flex-direction:column;gap:6px;transition:right 0.35s cubic-bezier(0.4,0,0.2,1);overflow-y:auto}
-.mobile-menu.open{right:0;box-shadow:-20px 0 60px rgba(0,0,0,0.5)}
-.mobile-menu a{font-family:var(--font-h);font-size:18px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.78);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s,padding-left 0.2s;display:block}
-.mobile-menu a:hover{color:var(--white);padding-left:6px}
-.mobile-menu .mm-cta{margin-top:24px;background:var(--white);color:var(--black);padding:16px 24px;text-align:center;border-bottom:none;font-weight:800}
-.mobile-menu .mm-cta:hover{background:var(--g200);padding-left:24px}
-.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:250;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;backdrop-filter:blur(4px)}
+.mobile-menu{position:fixed;top:0;right:-100%;width:min(78vw,280px);height:100vh;height:100dvh;background:rgba(10,10,10,0.82);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border-left:1px solid rgba(255,255,255,0.08);z-index:300;padding:64px 22px 22px;display:flex;flex-direction:column;gap:2px;transition:right 0.32s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;pointer-events:none;visibility:hidden}
+.mobile-menu.open{right:0;pointer-events:auto;visibility:visible;box-shadow:-12px 0 40px rgba(0,0,0,0.4)}
+.mobile-menu a{font-family:var(--font-h);font-size:15px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.82);text-decoration:none;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s,padding-left 0.2s,background 0.2s;display:block}
+.mobile-menu a:hover{color:var(--white);padding-left:10px;background:rgba(255,255,255,0.04)}
+.mobile-menu .mm-cta{margin-top:18px;background:var(--white);color:var(--black);padding:13px 18px;text-align:center;border-bottom:none;font-weight:800;font-size:13px;letter-spacing:0.08em}
+.mobile-menu .mm-cta:hover{background:var(--g200);padding-left:18px}
+.mm-close{position:absolute;top:14px;right:14px;width:38px;height:38px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background 0.2s,transform 0.2s;z-index:5}
+.mm-close:hover{background:rgba(255,255,255,0.16);transform:rotate(90deg)}
+.mm-close::before,.mm-close::after{content:'';position:absolute;width:16px;height:1.5px;background:var(--white);border-radius:2px}
+.mm-close::before{transform:rotate(45deg)}
+.mm-close::after{transform:rotate(-45deg)}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:250;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);cursor:pointer}
 .menu-overlay.active{opacity:1;visibility:visible}
 body.menu-open{overflow:hidden}
 
@@ -199,8 +204,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="menu-overlay" id="menu-overlay"></div>
-<nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile">
+<div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" aria-hidden="true">
+  <button class="mm-close" id="mm-close-btn" aria-label="Fermer le menu" type="button"></button>
   <a href="index.html" class="mm-link">Accueil</a>
   <a href="index.html#catalogue" class="mm-link">Catalogue</a>
   <a href="pourquoi.html" class="mm-link">Pourquoi Rimporty</a>
@@ -397,6 +403,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuOverlay = document.getElementById('menu-overlay');
+const mmCloseBtn = document.getElementById('mm-close-btn');
 function toggleMobileMenu(force) {
   const willOpen = force !== undefined ? force : !mobileMenu.classList.contains('open');
   mobileMenu.classList.toggle('open', willOpen);
@@ -404,10 +411,14 @@ function toggleMobileMenu(force) {
   hamburgerBtn.classList.toggle('active', willOpen);
   hamburgerBtn.setAttribute('aria-expanded', String(willOpen));
   hamburgerBtn.setAttribute('aria-label', willOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  mobileMenu.setAttribute('aria-hidden', String(!willOpen));
+  menuOverlay.setAttribute('aria-hidden', String(!willOpen));
   document.body.classList.toggle('menu-open', willOpen);
 }
-hamburgerBtn.addEventListener('click', () => toggleMobileMenu());
+hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMobileMenu(); });
+if (mmCloseBtn) mmCloseBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMobileMenu(false); });
 menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+menuOverlay.addEventListener('touchstart', () => toggleMobileMenu(false), {passive:true});
 document.querySelectorAll('.mobile-menu .mm-link').forEach(l => l.addEventListener('click', () => toggleMobileMenu(false)));
 document.addEventListener('keydown', e => { if(e.key==='Escape' && mobileMenu.classList.contains('open')) toggleMobileMenu(false); });
 </script>
