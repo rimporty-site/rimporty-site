@@ -139,8 +139,16 @@ footer{background:var(--black);padding:40px 56px;display:flex;justify-content:sp
 .flinks a:hover{color:rgba(255,255,255,0.85)}
 footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 
+/* "Plus d'articles" section */
+.more-section{border-top:1px solid var(--g200);margin:0 56px;padding-top:48px}
+.more-label{font-family:var(--font-h);font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--g400);margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.more-line{width:20px;height:1px;background:var(--g300);display:inline-block}
+.more-grid{margin:0 56px 56px}
+
 @media(max-width:1100px){
   .blog-grid{grid-template-columns:repeat(2,1fr);margin:40px 32px 0}
+  .more-grid{margin:0 32px 40px}
+  .more-section{margin:0 32px;padding-top:40px}
   .featured{margin:40px 32px 0}
   .newsletter{margin:40px 32px;padding:40px}
   nav{padding:0 32px}
@@ -153,8 +161,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
   .hamburger{display:flex;align-items:center;justify-content:center}
   .hero-blog{padding:64px 20px}
   .hero-blog p{font-size:14px}
-  .blog-grid{grid-template-columns:1fr;margin:32px 0 0;border:none;border-top:1px solid var(--g200)}
-  .article-card{border-bottom:1px solid var(--g200)}
+  .blog-grid{grid-template-columns:1fr;margin:32px 20px 0;gap:1px}
+  .more-grid{grid-template-columns:1fr;margin:0 20px 40px;gap:1px}
+  .more-section{margin:0 20px;padding-top:32px}
   .featured{grid-template-columns:1fr;margin:32px 20px 0}
   .featured-img{min-height:220px;order:-1}
   .featured-body{padding:32px 24px}
@@ -165,19 +174,25 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
   .nl-form button{width:100%;min-height:48px}
   footer{padding:28px 20px;flex-direction:column;align-items:flex-start;gap:18px;text-align:left}
   .flinks{flex-wrap:wrap;gap:16px}
-  .article-body{padding:24px 20px 26px}
+  .article-body{padding:22px 20px 24px}
   .article-title{font-size:18px}
-  div[style*="margin:0 56px"]{margin-left:0 !important;margin-right:0 !important;padding-left:20px;padding-right:20px}
-  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important;margin:0 !important}
+  .article-thumb{height:200px}
 }
 @media(max-width:600px){
   nav{padding:0 16px}
   .hero-blog{padding:52px 18px}
   .hero-blog h1{font-size:clamp(34px,9vw,52px)}
-  .featured{margin:24px 0 0}
-  .newsletter{padding:32px 18px}
+  .blog-grid,.more-grid{margin-left:16px;margin-right:16px}
+  .more-section{margin:0 16px;padding-top:28px}
+  .featured{margin:24px 16px 0}
+  .featured-body{padding:28px 20px}
+  .featured-body h2{font-size:22px}
+  .newsletter{padding:32px 18px;margin:32px 0}
   .nl-text h3{font-size:24px}
-  .article-thumb{height:180px}
+  .article-thumb{height:200px}
+  .article-body{padding:20px 18px}
+  .article-title{font-size:17px;line-height:1.2}
+  .article-excerpt{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
@@ -315,10 +330,10 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 </div>
 
 
-  <div style="border-top:1px solid var(--g200);margin:0 56px;padding-top:48px">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--g400);margin-bottom:32px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:var(--g300);display:inline-block"></span>Plus d'articles</div>
+  <div class="more-section">
+    <div class="more-label"><span class="more-line"></span>Plus d'articles</div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--g200);border:1px solid var(--g200);margin:0 56px 56px">
+  <div class="blog-grid more-grid">
 
     <a href="blog/prix-mercedes-glc-maroc-2025.html" class="article-card">
       <div class="article-thumb"><img src="https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778417845/mercedes-glc-coupe-glc-coupe-ii-ph1-300-d-amg-line-plus-4matic-bva-245ch_9533746695_vsrfrg.jpg" alt="Mercedes GLC Maroc" loading="lazy" decoding="async"></div>

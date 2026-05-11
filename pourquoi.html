@@ -246,8 +246,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="menu-overlay" id="menu-overlay"></div>
-<nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile">
+<div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" aria-hidden="true">
+  <button class="mm-close" id="mm-close-btn" aria-label="Fermer le menu" type="button"></button>
   <a href="index.html" class="mm-link">Accueil</a>
   <a href="index.html#catalogue" class="mm-link">Catalogue</a>
   <a href="pourquoi.html" class="mm-link" aria-current="page">Pourquoi Rimporty</a>
@@ -443,6 +444,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.25)}
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuOverlay = document.getElementById('menu-overlay');
+const mmCloseBtn = document.getElementById('mm-close-btn');
 function toggleMobileMenu(force) {
   const willOpen = force !== undefined ? force : !mobileMenu.classList.contains('open');
   mobileMenu.classList.toggle('open', willOpen);
@@ -450,10 +452,14 @@ function toggleMobileMenu(force) {
   hamburgerBtn.classList.toggle('active', willOpen);
   hamburgerBtn.setAttribute('aria-expanded', String(willOpen));
   hamburgerBtn.setAttribute('aria-label', willOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  mobileMenu.setAttribute('aria-hidden', String(!willOpen));
+  menuOverlay.setAttribute('aria-hidden', String(!willOpen));
   document.body.classList.toggle('menu-open', willOpen);
 }
-hamburgerBtn.addEventListener('click', () => toggleMobileMenu());
+hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMobileMenu(); });
+if (mmCloseBtn) mmCloseBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMobileMenu(false); });
 menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+menuOverlay.addEventListener('touchstart', () => toggleMobileMenu(false), {passive:true});
 document.querySelectorAll('.mobile-menu .mm-link').forEach(l => l.addEventListener('click', () => toggleMobileMenu(false)));
 document.addEventListener('keydown', e => { if(e.key==='Escape' && mobileMenu.classList.contains('open')) toggleMobileMenu(false); });
 </script>
