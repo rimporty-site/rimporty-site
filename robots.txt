@@ -1,0 +1,20 @@
+# robots.txt — Rimporty
+User-agent: *
+Allow: /
+Disallow: /confidentialite.html
+
+# Crawlers principaux
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloque les bots IA scrapers (optionnel — décommentez si souhaité)
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+
+Sitemap: https://rimporty.com/sitemap.xml
+Host: https://rimporty.com

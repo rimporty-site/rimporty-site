@@ -1,0 +1,27 @@
+{
+  "name": "Rimporty — Import voitures allemandes au Maroc",
+  "short_name": "Rimporty",
+  "description": "Importation de Mercedes, BMW, Audi, Porsche depuis l'Allemagne vers le Maroc.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "lang": "fr-MA",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dxpfjrxvt/image/upload/q_auto/f_auto/v1778353239/Astra_Base_Studio_xlsjxc.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
